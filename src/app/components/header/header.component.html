@@ -1,0 +1,9 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div *ngFor="let game of games" class="bg-steam-dark rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:transform hover:scale-105">
+      <img [src]="game.imageUrl" [alt]="game.title" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold mb-2">{{ game.title }}</h3>
+        <p class="text-steam-blue font-bold">{{ game.price | currency }}</p>
+      </div>
+    </div>
+  </div>

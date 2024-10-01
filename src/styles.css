@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-steam-bg text-steam-text;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bg-steam-blue text-steam-dark py-2 px-4 rounded font-bold hover:bg-opacity-80 transition duration-300;
+  }
+  
+  .game-image {
+    @apply w-full h-auto max-w-md mx-auto rounded-lg shadow-lg;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a475e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #66c0f4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1a9fff;
+}
+
+/* Additional global styles */
+.container {
+  max-width: 1200px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-steam-text;
+}
+
+.text-steam-blue {
+  color: #66c0f4;
+}
