@@ -10,33 +10,35 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],  // Include CommonModule and FormsModule
   template: `
     <div class="container mx-auto px-4 py-8">
-      <h1 class="text-4xl font-bold mb-6 text-steam-text">Checkout</h1>
-      <form (ngSubmit)="onSubmit(checkoutForm)" #checkoutForm="ngForm">
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" [(ngModel)]="name" name="name" required class="w-full border border-gray-300 p-2 rounded">
-        </div>
-        <div>
-          <label for="cardNumber">Card Number:</label>
-          <input type="text" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" required class="w-full border border-gray-300 p-2 rounded">
-        </div>
-        <div *ngIf="cartItems.length > 0; else emptyCart">
-          <ul class="mb-4">
-            <li *ngFor="let item of cartItems" class="flex justify-between mb-2">
-              {{ item.title }} - {{ item.price | currency }} x {{ item.quantity }}
-            </li>
-          </ul>
-          <div class="flex justify-between font-bold">
-            <span>Total:</span>
-            <span>{{ cartTotal | currency }}</span>
-          </div>
-          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Complete Purchase</button>
-        </div>
-        <ng-template #emptyCart>
-          <p>Your cart is empty.</p>
-        </ng-template>
-      </form>
+  <h1 class="text-4xl font-bold mb-6 text-steam-text">Checkout</h1>
+  <form (ngSubmit)="onSubmit(checkoutForm)" #checkoutForm="ngForm">
+    <div class="mb-4">
+      <label for="name" class="block text-steam-text mb-2">Name:</label>
+      <input type="text" id="name" [(ngModel)]="name" name="name" required 
+             class="w-full border border-gray-300 p-2 rounded text-black bg-white">
     </div>
+    <div class="mb-4">
+      <label for="cardNumber" class="block text-steam-text mb-2">Card Number:</label>
+      <input type="text" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" required 
+             class="w-full border border-gray-300 p-2 rounded text-black bg-white">
+    </div>
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <ul class="mb-4">
+        <li *ngFor="let item of cartItems" class="flex justify-between mb-2 text-steam-text">
+          {{ item.title }} - {{ item.price | currency }} x {{ item.quantity }}
+        </li>
+      </ul>
+      <div class="flex justify-between font-bold text-steam-text">
+        <span>Total:</span>
+        <span>{{ cartTotal | currency }}</span>
+      </div>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Complete Purchase</button>
+    </div>
+    <ng-template #emptyCart>
+      <p class="text-steam-text">Your cart is empty.</p>
+    </ng-template>
+  </form>
+</div>
   `
 })
 export class CheckoutComponent implements OnInit {

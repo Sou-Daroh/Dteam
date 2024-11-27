@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartService, CartItem } from '../../services/cart.service';
-import { Router } from '@angular/router'; // Import Router for navigation
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-header',
@@ -23,9 +23,9 @@ import { Router } from '@angular/router'; // Import Router for navigation
           <div class="w-full flex-grow md:w-auto md:flex md:items-center md:justify-between ml-8">
             <div class="text-sm md:flex-grow">
               <a routerLink="/" class="block mt-4 md:inline-block md:mt-0 text-steam-text hover:text-steam-blue mr-4">
-                Home
+                
               </a>
-              <a routerLink="/games" class="block mt-4 md:inline-block md:mt-0 text-steam-text hover:text-steam-blue mr-4">
+              <a routerLink="/games" class="block mt-4 md:inline-block md:mt-0 text-steam-text hover:text-steam-blue mr-4 text-xl font-medium">
                 Games
               </a>
             </div>

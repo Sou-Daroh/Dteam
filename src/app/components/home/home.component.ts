@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,6 @@ import { RouterLink } from '@angular/router';
   template: `
     <div class="flex flex-col items-center justify-center min-h-screen text-center px-4">
       <h1 class="text-5xl font-bold mb-4 text-steam-text">Welcome to Dteam</h1>
-      <p class="text-xl mb-8 text-steam-text">Discover and explore amazing games!</p>
       <a routerLink="/games" class="btn text-lg py-3 px-6">Browse Games</a>
     </div>
   `,
