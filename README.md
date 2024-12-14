@@ -1,6 +1,6 @@
 # Dteam
 
-A modern web application built with Angular 19.0.1 and Vite, designed for efficient team collaboration and project management.
+An E-Commerce Digital Video Games
 
 ## 🚀 Quick Start
 Clone the repository
