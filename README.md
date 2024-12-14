@@ -20,11 +20,34 @@ npm run dev
 
 ## 📦 Tech Stack
 
-- Angular 19.0.1
-- Vite (Build Tool)
-- TypeScript
-- SCSS/CSS
+### Frontend
+- Angular 19.0.1 (Core framework)
+- TypeScript 5.2.2
+- Vite (Build tool)
 - HTML5
+- CSS3/SCSS
+
+### Development Tools
+- Node.js
+- npm (Package manager)
+- Git (Version control)
+- VS Code (Recommended IDE)
+
+### Key Dependencies
+- @angular/animations
+- @angular/common
+- @angular/forms
+- @angular/core
+- @angular/platform-browser
+- @angular/router
+
+### Development Dependencies
+- @angular-devkit/build-angular
+- @angular/cli
+- @angular/compiler-cli
+- @types/node
+- typescript
+- vite
 
 ## 🔧 Development
 Development server
@@ -35,16 +58,6 @@ Preview production build
 npm run preview
 Run tests
 npm run test
-## 📁 Project Structure
-Dteam/
-├── src/ # Source files
-│ ├── app/ # Application components
-│ ├── assets/ # Static assets
-│ └── styles/ # Global styles
-├── public/ # Public static files
-├── dist/ # Build output
-└── node_modules/ # Dependencies
-
 
 ## 🔑 Key Features
 
@@ -56,13 +69,6 @@ Dteam/
 - HTTP client integration
 - Routing system
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📄 License
 
@@ -70,10 +76,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-- [Your Name] - Lead Developer - [@Sou-Daroh](https://github.com/Sou-Daroh)
+- [Sou Daroh] - Lead Developer - [@Sou-Daroh](https://github.com/Sou-Daroh)
 
 ## 📫 Contact
 
-Your Name - [your.email@example.com]
+Sou Daroh - [daroh.sou22@kit.edu.kh]
 
 Project Link: [https://github.com/Sou-Daroh/Dteam](https://github.com/Sou-Daroh/Dteam)
