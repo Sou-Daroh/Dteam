@@ -1,27 +1,79 @@
 # Dteam
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+A modern web application built with Angular 19.0.1 and Vite, designed for efficient team collaboration and project management.
 
-## Development server
+## 🚀 Quick Start
+Clone the repository
+git clone https://github.com/Sou-Daroh/Dteam.git
+Navigate to project directory
+cd Dteam
+Install dependencies
+npm install
+Start development server
+npm run dev
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🛠️ Prerequisites
 
-## Code scaffolding
+- Node.js (v18 or higher)
+- npm (Node Package Manager)
+- Modern web browser (Chrome, Firefox, Edge, etc.)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 📦 Tech Stack
 
-## Build
+- Angular 19.0.1
+- Vite (Build Tool)
+- TypeScript
+- SCSS/CSS
+- HTML5
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🔧 Development
+Development server
+npm run dev
+Build for production
+npm run build
+Preview production build
+npm run preview
+Run tests
+npm run test
+## 📁 Project Structure
+Dteam/
+├── src/ # Source files
+│ ├── app/ # Application components
+│ ├── assets/ # Static assets
+│ └── styles/ # Global styles
+├── public/ # Public static files
+├── dist/ # Build output
+└── node_modules/ # Dependencies
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🔑 Key Features
 
-## Running end-to-end tests
+- Modern Angular architecture
+- Vite-powered development
+- Component-based structure
+- Responsive design
+- Form handling
+- HTTP client integration
+- Routing system
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🤝 Contributing
 
-## Further help
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+
+- [Your Name] - Lead Developer - [@Sou-Daroh](https://github.com/Sou-Daroh)
+
+## 📫 Contact
+
+Your Name - [your.email@example.com]
+
+Project Link: [https://github.com/Sou-Daroh/Dteam](https://github.com/Sou-Daroh/Dteam)
