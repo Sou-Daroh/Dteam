@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: 'games', component: GameListComponent },
   { path: 'game/:id', component: GameDetailComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
-  { path: 'checkout', component: CheckoutComponent }, // Add this route
+  { path: 'checkout', component: CheckoutComponent }, 
   { path: '', redirectTo: '/shopping-cart', pathMatch: 'full' },
 ];
 

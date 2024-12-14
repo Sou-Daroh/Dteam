@@ -4,10 +4,9 @@ import { Router } from '@angular/router'; // Import Router for navigation
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-shopping-cart',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-shopping-cart',
+    imports: [CommonModule],
+    template: `
     <div class="container mx-auto px-4 py-8">
       <h1 class="text-4xl font-bold mb-6 text-steam-text">Shopping Cart</h1>
       <div *ngIf="cartItems.length > 0; else emptyCart">
@@ -29,7 +28,7 @@ import { CommonModule } from '@angular/common';
       </ng-template>
     </div>
   `,
-  styles: [``]
+    styles: [``]
 })
 export class ShoppingCartComponent implements OnInit {
   cartItems: CartItem[] = [];

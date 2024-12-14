@@ -1,112 +1,162 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CartService, CartItem } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
-
-interface Game {
-  id: number;
-  title: string;
-  price: number;
-  imageUrl: string;
-  description: string;
-}
+import { ActivatedRoute, Router  } from '@angular/router';
+import { GameService, Game } from '../../services/game.service';
+import { CartService } from '../../services/cart.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-game-detail',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div *ngIf="game" class="container mx-auto px-4 py-8">
-      <h1 class="text-4xl font-bold mb-6 text-steam-text">{{ game.title }}</h1>
-      <div class="flex flex-col md:flex-row gap-8">
-        <div class="md:w-1/2 lg:w-2/5">
-          <img [src]="game.imageUrl" [alt]="game.title" class="w-full h-auto" style="max-width: 300px; margin: 0 auto; display: block;">
-        </div>
-        <div class="md:w-1/2 lg:w-3/5">
-          <p class="text-lg mb-4 text-steam-text">{{ game.description }}</p>
-          <p class="text-3xl font-bold text-steam-blue mb-4">{{ game.price | currency }}</p>
-          <button (click)="addToCart()" class="btn w-full md:w-auto text-lg py-2 px-6">Add to Cart</button>
-        </div>
+    <div class="min-h-screen bg-steam-dark py-8">
+      <div class="container mx-auto px-4">
+        @if (loading) {
+          <div class="text-center text-white">Loading...</div>
+        } @else if (error) {
+          <div class="text-center text-red-500">{{ error }}</div>
+        } @else if (game) {
+          <div class="bg-steam-light rounded-lg overflow-hidden max-w-4xl mx-auto"> 
+            <!-- Game Header - Image -->
+            <div class="relative">
+              <img [src]="game.imageUrl" [alt]="game.title" 
+                   class="w-full object-contain bg-black">
+            </div>
+
+           <!-- Title, Genre, and Rating Section -->
+            <div class="p-6 border-b border-steam-dark">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h1 class="text-4xl font-bold text-steam-text mb-2">{{game.title}}</h1>
+                  <div class="flex flex-wrap gap-2">
+                    @for (genre of game.genres; track genre) {
+                      <span class="text-sm text-steam-text opacity-80 bg-steam-dark px-2 py-1 rounded">
+                        {{genre}}
+                      </span>
+                    }
+                  </div>
+                </div>
+                <div class="text-right flex flex-col items-end">
+                  <!-- Rating Container -->
+                  <div class="flex items-center space-x-2 mb-2">
+                    <div class="flex items-center bg-steam-dark rounded-lg px-3 py-2">
+                      <i class="fas fa-star text-yellow-400 mr-2"></i>
+                      <span class="text-xl font-bold text-steam-text">{{game.rating}}</span>
+                      <span class="text-sm text-steam-text opacity-80 ml-1">/5</span>
+                    </div>
+                  </div>
+                  <!-- Release Date -->
+                  <p class="text-sm text-steam-text opacity-80">
+                    Released: {{game.releaseDate | date:'mediumDate'}}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Game Details -->
+            <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+              <!-- Description and Features -->
+              <div class="md:col-span-2">
+                <h2 class="text-2xl font-bold text-steam-text mb-4">About This Game</h2>
+                <p class="text-steam-text mb-6">{{game.description}}</p>
+                
+                <!-- Features Section -->
+                <div class="mt-6">
+                  <h3 class="text-xl font-bold text-steam-text mb-3">Features</h3>
+                  <div class="flex flex-wrap gap-2">
+                    @for (feature of game.features; track feature) {
+                      <span class="bg-steam-dark text-steam-text px-3 py-1 rounded-full text-sm">
+                        {{ feature }}
+                      </span>
+                    }
+                  </div>
+                </div>
+              </div>
+
+              <!-- Purchase Section -->
+              <div class="bg-steam-dark p-4 rounded-lg">
+                <div class="mb-4">
+                  <p class="text-lg text-steam-text mb-2">Price:</p>
+                  <div class="flex items-center gap-2">
+                    @if (game.discount) {
+                      <span class="bg-green-600 text-white px-2 py-1 rounded">
+                        -{{game.discount}}%
+                      </span>
+                      <div class="flex flex-col">
+                        <span class="text-sm text-steam-text line-through">
+                          {{game.originalPrice | currency}}
+                        </span>
+                        <span class="text-2xl font-bold text-steam-blue">
+                          {{game.price | currency}}
+                        </span>
+                      </div>
+                    } @else {
+                      <span class="text-2xl font-bold text-steam-blue">
+                        {{game.price | currency}}
+                      </span>
+                    }
+                  </div>
+                </div>
+                <button (click)="addToCart()" 
+                        class="w-full bg-steam-blue text-white py-3 rounded-lg hover:bg-opacity-90 transition-all">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        }
       </div>
     </div>
-  `,
-  styles: [`
-    .btn {
-      background-color: #66c0f4;
-      color: #171a21;
-      transition: background-color 0.3s;
-    }
-    .btn:hover {
-      background-color: #1a9fff;
-    }
-  `]
+  `
 })
 export class GameDetailComponent implements OnInit {
-  game: Game | undefined;
+  game: Game | null = null;
+  error: string | null = null;
+  loading: boolean = true;
 
-  constructor(private route: ActivatedRoute, private cartService: CartService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private gameService: GameService,
+    private cartService: CartService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit() {
-    const gameId = Number(this.route.snapshot.paramMap.get('id'));
-    this.game = this.getGameById(gameId);
-  }
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log('Game ID from route:', id); 
 
-  getGameById(id: number): Game | undefined {
-    const games: Game[] = [
-      { 
-        id: 1, 
-        title: 'Cyberpunk 2077', 
-        price: 59.99, 
-        imageUrl: 'assets/game-images/cyberpunk2077.jpg', 
-        description: 'An open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification.'
+    if (!id) {
+      this.error = 'Game ID not found';
+      this.loading = false;
+      return;
+    }
+
+    this.gameService.getGameById(id).subscribe({
+      next: (game) => {
+        console.log('Received game:', game); 
+        this.game = game;
+        this.loading = false;
       },
-      { 
-        id: 2, 
-        title: 'The Witcher 3: Wild Hunt', 
-        price: 39.99, 
-        imageUrl: 'assets/game-images/witcher3.jpg', 
-        description: 'An action role-playing game set in an open world environment. You play as Geralt of Rivia, a monster hunter known as a Witcher.'
-      },
-      { 
-        id: 3, 
-        title: 'Red Dead Redemption 2', 
-        price: 59.99, 
-        imageUrl: 'assets/game-images/rdr2.jpg', 
-        description: "An epic tale of life in America's unforgiving heartland."
-      },
-      { 
-        id: 4, 
-        title: 'Stray', 
-        price: 29.99, 
-        imageUrl: 'assets/game-images/stray.jpg', 
-        description: 'Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten cybercity.'
-      },
-      { 
-        id: 5, 
-        title: 'Stardew Valley', 
-        price: 14.99, 
-        imageUrl: 'assets/game-images/stardewvalley.jpg', 
-        description: "You've inherited your grandfather's old farm plot in Stardew Valley."
-      },
-      { 
-        id: 6, 
-        title: 'Elden Ring', 
-        price: 59.99, 
-        imageUrl: 'assets/game-images/eldenring.jpg', 
-        description: 'An action role-playing game developed by FromSoftware.'
-      },
-    ];
-    return games.find(game => game.id === id);
+      error: (error) => {
+        console.error('Error loading game:', error);
+        this.error = error.message;
+        this.loading = false;
+      }
+    });
   }
 
   addToCart() {
     if (this.game) {
-      const item: CartItem = {
+      this.cartService.addToCart({
+        id: this.game._id,
         title: this.game.title,
         price: this.game.price,
-        quantity: 1, // You can modify this as needed
-      };
-      this.cartService.addToCart(item);
+        quantity: 1,
+        imageUrl: this.game.imageUrl
+      });
+      this.toastService.show(`${this.game.title} added to cart`, 'success');
     }
   }
 }

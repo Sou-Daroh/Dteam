@@ -48,3 +48,46 @@ h1, h2, h3, h4, h5, h6 {
 .text-steam-blue {
   color: #66c0f4;
 }
+
+.bg-steam-dark {
+  background-color: #1b2838;
+}
+
+.bg-steam-light {
+  background-color: #2a475e;
+}
+
+.bg-steam-blue {
+  background-color: #66c0f4;
+}
+
+.text-steam-text {
+  color: #c7d5e0;
+}
+
+.group:hover .group-hover\:text-white {
+  color: white;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+:root {
+  --steam-dark: #1b2838;
+  --steam-light: #2a475e;
+  --steam-blue: #66c0f4;
+  --steam-text: #c7d5e0;
+}
+
+.bg-steam-green {
+  background-color: #5c7e10;
+}
+
+.bg-steam-blue {
+  background-color: #66c0f4;
+}
+
+.text-steam-blue {
+  color: #66c0f4;
+}
