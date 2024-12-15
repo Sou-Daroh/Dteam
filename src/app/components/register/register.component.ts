@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router'; // Add RouterLink import
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -129,7 +130,7 @@ export class RegisterComponent {
       password: this.password
     };
 
-    this.http.post('http://localhost:5000/api/auth/register', userData)
+    this.http.post(environment.apiUrl+'/auth/register', userData)
       .subscribe({
         next: (response: any) => {
           console.log('Registration successful', response);
