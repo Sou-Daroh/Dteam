@@ -1,27 +1,85 @@
 # Dteam
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+An E-Commerce Digital Video Games
 
-## Development server
+## 🚀 Quick Start
+Clone the repository
+git clone https://github.com/Sou-Daroh/Dteam.git
+Navigate to project directory
+cd Dteam
+Install dependencies
+npm install
+Start development server
+npm run dev
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🛠️ Prerequisites
 
-## Code scaffolding
+- Node.js (v18 or higher)
+- npm (Node Package Manager)
+- Modern web browser (Chrome, Firefox, Edge, etc.)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 📦 Tech Stack
 
-## Build
+### Frontend
+- Angular 19.0.1 (Core framework)
+- TypeScript 5.2.2
+- Vite (Build tool)
+- HTML5
+- CSS3/SCSS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Development Tools
+- Node.js
+- npm (Package manager)
+- Git (Version control)
+- VS Code (Recommended IDE)
 
-## Running unit tests
+### Key Dependencies
+- @angular/animations
+- @angular/common
+- @angular/forms
+- @angular/core
+- @angular/platform-browser
+- @angular/router
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Development Dependencies
+- @angular-devkit/build-angular
+- @angular/cli
+- @angular/compiler-cli
+- @types/node
+- typescript
+- vite
 
-## Running end-to-end tests
+## 🔧 Development
+Development server
+npm run dev
+Build for production
+npm run build
+Preview production build
+npm run preview
+Run tests
+npm run test
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🔑 Key Features
 
-## Further help
+- Modern Angular architecture
+- Vite-powered development
+- Component-based structure
+- Responsive design
+- Form handling
+- HTTP client integration
+- Routing system
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+
+- [Sou Daroh] - Lead Developer - [@Sou-Daroh](https://github.com/Sou-Daroh)
+
+## 📫 Contact
+
+Sou Daroh - [daroh.sou22@kit.edu.kh]
+
+Project Link: [https://github.com/Sou-Daroh/Dteam](https://github.com/Sou-Daroh/Dteam)
